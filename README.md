@@ -6,14 +6,17 @@ This solution demonstrates how to create a stateful service application using Mi
   https://en.wikipedia.org/wiki/Hash-based_message_authentication_code
 
 ### Projects are as follows:
-* WebApi 
+* __WebApi__
+
     Accepts Http POST requests from clients to the "transactions" controller. The request is expected to have an "X-HMAC" header. The api then uses the ReliableHmacRepository to query the HmacService for previously existing requests with the same HMAC.
 
-* HmacService 
+* __HmacService__ 
 
     Stateful service that maintains a collection of previously seen HMACs. It can be queried for existance of an HMAC. New HMACs are added to the collection which is made reliable by the Service Fabric. 
 
-* HmacDomain 
+* __HmacDomain__ 
+
     Contains the service contract that is exposed by the HmacService. Referenced by both the WebApi & HmacService. 
-* HmacDemo 
+* __HmacDemo__ 
+
     Deployment project for Azure Service Fabric. 
